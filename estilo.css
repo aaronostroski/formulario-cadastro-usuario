@@ -1,0 +1,27 @@
+.titulo-ajuste{
+
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: solid 1px grey;
+
+}
+
+.marcador{
+
+    background: red;
+    border: 1px solid black;
+    
+
+}
+
+.ajuste-espacamento-label{
+
+    padding-top: 10px;
+}
+
+.table-borda{
+
+    border: solid 1px red;
+
+}
