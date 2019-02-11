@@ -1,6 +1,6 @@
 class User{ // classe com os propriedades para criar o JSON
 
-    constructor(name, email, telephone, birth, gender, password, photo){
+    constructor(name, email, telephone, birth, gender, password, photo, checkbox){
 
         this.name = name;
         this.email = email;
@@ -9,6 +9,7 @@ class User{ // classe com os propriedades para criar o JSON
         this.gender = gender;
         this.password = password;
         this.photo = photo;
+        this.check = checkbox;
 
     }
 

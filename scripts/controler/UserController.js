@@ -9,7 +9,7 @@ class UserController{
     } // fim construtor
 
 
-submitValue(){ // enviar json
+submitValue(){ // enviar json/criar tabelas
 
     this.formEl.addEventListener('submit', (event) =>{
 
@@ -17,14 +17,19 @@ submitValue(){ // enviar json
 
         let dataUser = this.createJson();
 
-        this.getPhoto((content)=>{
+        this.getPhoto().then(
+            
+            (content)=>{
 
-            dataUser.photo = content;
+                dataUser.photo = content;
 
-            this.createTable(dataUser, this.tableEl);
-        });
+                this.createTable(dataUser, this.tableEl)
 
-        this.createTable(dataUser, this.tableEl);
+        },  (error)=>{
+
+                console.error(error);
+
+        }); // fim then
 
 
 
@@ -67,7 +72,8 @@ createJson(){ // criar Json
         user.birth,
         user.gender,
         user.password,
-        user.photo
+        user.photo,
+        user.check
 
     ) // retorna os valores
         
@@ -76,7 +82,9 @@ createJson(){ // criar Json
 } // fim do método
 
 
-getPhoto(callback){ // metodo para upload da foto
+getPhoto(){ // metodo para upload da foto
+
+    return new Promise((resolve, reject) =>{
 
     let fileReader = new FileReader();
 
@@ -94,11 +102,20 @@ getPhoto(callback){ // metodo para upload da foto
     fileReader.onload = ()=>{
 
 
-        callback(fileReader.result)
+       resolve(fileReader.result); // se der certo
+    }
+
+    fileReader.onerror = (e)=>{
+
+
+        reject(e) // se der errado
     }
 
     fileReader.readAsDataURL(imageNumber);
 
+
+
+    }) // trabalhando com promise para receber o upload
 
 
 
@@ -120,6 +137,7 @@ createTable(usuarios, tabela){ // criar table rule quando clicar no botão envia
         <td>
         <button type='button' class='btn btn-danger'>Excluir</button>
         </td>
+        <td>${usuarios.check}</td>
 
     </tr>`
 

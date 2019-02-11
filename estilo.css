@@ -25,3 +25,15 @@
     border: solid 1px red;
 
 }
+
+th{
+
+    font-size: 0.7em;
+}
+
+img{
+
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
