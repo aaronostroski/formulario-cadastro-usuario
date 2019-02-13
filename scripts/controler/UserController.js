@@ -55,10 +55,17 @@ createJson(){ // criar Json
                 user[field.name] = field.value;
 
             }
-        } else{
 
-            user[field.name] = field.value;
-        }
+            else if (field.name === 'admin'){
+
+                user[field.name] = field.checked;
+
+            }
+
+            } else{
+
+                user[field.name] = field.value;
+            }
 
 
 
@@ -93,9 +100,10 @@ getPhoto(){ // metodo para upload da foto
         if ( item.name == 'photo' ) {
 
             return item;
-        }
 
-    })
+
+        }            
+    }) // fim metodo filter
 
     let imageNumber = elements[0].files[0]; // file[0] pra pegar justamente o primeiro arquivo
 
@@ -103,6 +111,7 @@ getPhoto(){ // metodo para upload da foto
 
 
        resolve(fileReader.result); // se der certo
+
     }
 
     fileReader.onerror = (e)=>{
@@ -111,11 +120,17 @@ getPhoto(){ // metodo para upload da foto
         reject(e) // se der errado
     }
 
-    fileReader.readAsDataURL(imageNumber);
+    if (file === true ) {
+        
+        fileReader.readAsDataURL(imageNumber);
+
+    } else {
+
+        resolve();
+    }
 
 
-
-    }) // trabalhando com promise para receber o upload
+}) // fim promise
 
 
 
@@ -137,7 +152,7 @@ createTable(usuarios, tabela){ // criar table rule quando clicar no botão envia
         <td>
         <button type='button' class='btn btn-danger'>Excluir</button>
         </td>
-        <td>${usuarios.check}</td>
+        <td>${(usuarios.admin) ? 'Sim' : 'Não' }</td>
 
     </tr>`
 
