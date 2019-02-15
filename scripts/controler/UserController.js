@@ -15,7 +15,16 @@ submitValue(){ // enviar json/criar tabelas
 
         event.preventDefault();
 
+        let btn = this.formEl.querySelector("[type=submit]");
+
+        btn.disabled = true;
+
         let dataUser = this.createJson();
+
+        if(dataUser == false){
+
+            return false;
+        }
 
         this.getPhoto().then(
             
@@ -24,6 +33,10 @@ submitValue(){ // enviar json/criar tabelas
                 dataUser.photo = content;
 
                 this.createTable(dataUser, this.tableEl)
+
+                this.formEl.reset();
+
+                btn.disabled = false;
 
         },  (error)=>{
 
@@ -45,8 +58,20 @@ createJson(){ // criar Json
 
     var user ={};
 
+    let isValid = true; // parar o looping
 
     [...this.formEl.elements].forEach( (field, index)=>{
+
+        if(["usur", "email1", "passwd"].indexOf(field.name) > -1 && !field.value){ 
+
+        
+            field.parentElement.classList.add('has-error');
+
+            isValid = false;
+
+
+        }
+
 
         if(field.name == 'sexo'){
 
@@ -68,19 +93,24 @@ createJson(){ // criar Json
             }
 
 
-
+        console.log(user);
     }); // fim if
+
+    if(isValid == false){
+
+        return false;
+    }
 
     return new User(
 
-        user.name,
-        user.email,
+        user.usur,
+        user.email1,
         user.telephone,
-        user.birth,
-        user.gender,
-        user.password,
+        user.born,
+        user.sexo,
+        user.passwd,
         user.photo,
-        user.check
+        user.admin
 
     ) // retorna os valores
         
@@ -120,7 +150,7 @@ getPhoto(){ // metodo para upload da foto
         reject(e) // se der errado
     }
 
-    if (file === true ) {
+    if (imageNumber) {
         
         fileReader.readAsDataURL(imageNumber);
 
@@ -143,17 +173,16 @@ createTable(usuarios, tabela){ // criar table rule quando clicar no botão envia
 
     tr.innerHTML = `
         <td><img src="${usuarios.photo}" alt="User Image" class="img-circle img-sm"></td>
-        <td>${usuarios.usur}</td>
-        <td>${usuarios.email1}</td>
+        <td>${usuarios.name}</td>
+        <td>${usuarios.email}</td>
         <td>${usuarios.telephone}</td>
-        <td>${usuarios.born}</td>
-        <td>${usuarios.sexo}</td>
-        <td>${usuarios.passwd}</td>
+        <td>${usuarios.register}</td>
+        <td>${usuarios.gender}</td>
+        <td>${usuarios.password}</td>
         <td>
         <button type='button' class='btn btn-danger'>Excluir</button>
         </td>
         <td>${(usuarios.admin) ? 'Sim' : 'Não' }</td>
-
     </tr>`
 
     tabela.appendChild(tr);

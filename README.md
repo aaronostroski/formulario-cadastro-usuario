@@ -1,4 +1,2 @@
 # formulario-cadastro-usuario
-Criando uma pagina para cadastrar usuários. Ainda no estagio inicial
-
-Adicionado classes para o envio de informações
+Criando uma página simples para cadastro de usuário.
