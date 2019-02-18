@@ -6,9 +6,9 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='estilo.css'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">    
+        
+
 </head>
 <body>
 
@@ -25,7 +25,7 @@
                     <div class='form-group row'>
 
                         <label for='nome'>Nome: </label>
-                        <input type='text' id='nome' class='form-control' name='usur' placeholder="Digite seu nome completo." required autofocus>
+                        <input type='text' id='nome' class="form-control" name='usur' placeholder="Digite seu nome completo." autofocus>
                         
 
                     </div>
@@ -33,35 +33,41 @@
                     <div class='form-group row'>
 
                         <label for='email'>Email: </label>
-                        <input type='email' id='email' class='form-control' name='email1' placeholder='example@cadastro.com' required>
+                        <input type='email' id='email' class='form-control' name='email1' placeholder='example@cadastro.com' >
 
                     </div>
 
                     <div class='form-group row'>
 
                         <label for='telefone'>Telefone: </label>
-                        <input type='tel' id='telefone' class='form-control' name='telephone' placeholder='(00)-00000-0000' required>
+                        <input type='tel' id='telefone' class='form-control' name='telephone' placeholder='(00)-00000-0000' >
 
                     </div>
 
                     <div class='form-group row'>
                         <label for='nascimento''>Nascimento: </label>
-                        <input type='date' id='nascimento' class='form-control' name='born' required> 
+                        <input type='date' id='nascimento' class='form-control' name='born' > 
                     </div>
 
                     <div class='radio form-group row'>
 
-                        <label> Sexo: </label>
-                        <input type='radio' id='sexoM' name='sexo' required>
-                        <label for='sexoM'> Masculino </label> 
-                        <input type='radio' id='sexoF' name='sexo' required>
-                        <label for='sexoF'> Feminino </label>
+                            <label>Gênero: </label>
+                            <div class="radio">
+                              <label for="sexoM">
+                                <input type="radio" id="sexoM" name="sexo" value='M'>
+                                Masculino</label>
+                            </div>
+                            <div class="radio">
+                              <label for="sexoF">
+                                <input type="radio" id="sexoF" name="sexo" value='F'>
+                                Feminino</label>
+                            </div>
                     
                     </div>
 
                     <div class='form-group row'>
                         <label for='senha'>Senha: </label>
-                        <input type='password' id='senha' class='form-control' name='passwd' placeholder='Digite sua senha.' required>
+                        <input type='password' id='senha' class='form-control' name='passwd' placeholder='Digite sua senha.' >
                 
                     </div>
 
@@ -117,12 +123,13 @@
 
     </div>
 
-
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    
 
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 
 <script src='scripts/models/User.js'></script>
 <script src='scripts/controler/UserController.js'></script>

@@ -8,6 +8,19 @@ class UserController{
         
     } // fim construtor
 
+disableButton(){
+
+    let btn = this.formEl.querySelector("[type=submit]");    
+
+    btn.disabled = true;
+}
+
+enableButton(){
+
+    let btn = this.formEl.querySelector("[type=submit]");
+
+    btn.disabled = false;
+}
 
 submitValue(){ // enviar json/criar tabelas
 
@@ -15,9 +28,7 @@ submitValue(){ // enviar json/criar tabelas
 
         event.preventDefault();
 
-        let btn = this.formEl.querySelector("[type=submit]");
-
-        btn.disabled = true;
+        this.disableButton();
 
         let dataUser = this.createJson();
 
@@ -36,7 +47,7 @@ submitValue(){ // enviar json/criar tabelas
 
                 this.formEl.reset();
 
-                btn.disabled = false;
+                this.enableButton();
 
         },  (error)=>{
 
@@ -62,16 +73,14 @@ createJson(){ // criar Json
 
     [...this.formEl.elements].forEach( (field, index)=>{
 
-        if(["usur", "email1", "passwd"].indexOf(field.name) > -1 && !field.value){ 
+        if(["usur", "email1", "telephone", "born", "sexo", "passwd", "photo"].indexOf(field.name) > -1 && !field.value){ 
 
-        
-            field.parentElement.classList.add('has-error');
+            field.classList.add("is-invalid");
 
             isValid = false;
 
 
         }
-
 
         if(field.name == 'sexo'){
 
@@ -79,28 +88,41 @@ createJson(){ // criar Json
 
                 user[field.name] = field.value;
 
+                console.log(user.sexo);
+
+            }  else { 
+
+                return false; // não permite o looping atribuir os valores do campo 2x
             }
 
-            else if (field.name === 'admin'){
+        }
 
-                user[field.name] = field.checked;
+        if (field.name == 'admin'){
 
-            }
+            user[field.name] = field.checked;
 
-            } else{
+
+        } else{
 
                 user[field.name] = field.value;
             }
 
+        
+        
+    }); // fim forEach
 
-        console.log(user);
-    }); // fim if
 
     if(isValid == false){
+
+        let btn = this.formEl.querySelector("[type=submit]");
+
+        this.enableButton();
 
         return false;
     }
 
+    console.log(user);
+    
     return new User(
 
         user.usur,
@@ -116,7 +138,7 @@ createJson(){ // criar Json
         
     
 
-} // fim do método
+} // fim do método createJson
 
 
 getPhoto(){ // metodo para upload da foto
