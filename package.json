@@ -1,0 +1,26 @@
+{
+  "name": "formulario-cadastro-usuario",
+  "version": "1.0.0",
+  "description": "Criando uma página simples para cadastro de usuário.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronostroski/formulario-cadastro-usuario.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronostroski/formulario-cadastro-usuario/issues"
+  },
+  "homepage": "https://github.com/aaronostroski/formulario-cadastro-usuario#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "consign": "^0.1.6",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  }
+}
